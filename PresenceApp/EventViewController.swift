@@ -13,6 +13,7 @@ class EventViewController: UIViewController {
     
     var userPost = UserPost()
     var loginAnswer: [String:Bool] = [:]
+    var userEmail: String = ""
     
     var event: Event? = nil
     var user: User? = nil
@@ -21,7 +22,9 @@ class EventViewController: UIViewController {
     @IBOutlet var eventNameLabel: UILabel!
     @IBOutlet var locationLabel: UILabel!
     @IBOutlet var addressLabel: UILabel!
-    @IBOutlet var dateTimeLabel: UILabel!
+    @IBOutlet var startLabel: UILabel!
+    @IBOutlet var endLabel: UILabel!
+    
     
     func badLogin(action: UIAlertAction!) {
         print("Will Try Again")
@@ -31,7 +34,7 @@ class EventViewController: UIViewController {
     
     @IBAction func checkInButton(_ sender: Any) {
         OperationQueue.main.addOperation {
-            self.userPost.postCheckIn(email: "adrian@gmail", id: 22) { loginResult in
+            self.userPost.postCheckIn(email: self.userEmail, id: (self.event?.iD)!) { loginResult in
                 switch loginResult {
                     
                 case let .successLogin(check) :
@@ -39,8 +42,11 @@ class EventViewController: UIViewController {
                     
                     if self.loginAnswer == ["success": true] {
                         
-                            let attendeesNav = self.storyboard!.instantiateViewController(withIdentifier: "AttendeesNav")
-                            self.present(attendeesNav, animated: true, completion: nil)
+                        
+                            let attendeesVC = self.storyboard!.instantiateViewController(withIdentifier: "AttendeesView") as! AttendeesTableTableViewController
+                        
+                        attendeesVC.eventId = (self.event?.iD)!
+                            self.present(attendeesVC, animated: true, completion: nil)
                         
                     } else {
                         
@@ -84,11 +90,12 @@ class EventViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.darkGray
         
-        /*eventNameLabel?.text = event.name
-        locationLabel?.text = event.location
-        addressLabel?.text = event.address
-        dateTimeLabel?.text = "start: \(String(event.startTime / 1000))"*/
-        
+        eventNameLabel?.text = event?.name
+        locationLabel?.text = event?.location
+        addressLabel?.text = event?.address
+        startLabel?.text = "Start: \(Date(timeIntervalSince1970: (event?.startTime)! / 1000))"
+        endLabel?.text = "End: \(Date(timeIntervalSince1970: (event?.endTime)! / 1000))"
+    
 
     }
 

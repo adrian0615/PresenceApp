@@ -10,7 +10,8 @@ import Foundation
 
 
 internal enum RequestPostResult {
-    case success([UserRequest])
+    case successSent([String: Bool])
+    case successRequests([UserRequest])
     case failure(RequestPost.Error)
 }
 
@@ -23,7 +24,51 @@ class RequestPost {
         case system(Swift.Error)
     }
     
+    func postSendRequest(senderEmail: String, sendeeEmail: String, status: String, completion: @escaping (RequestPostResult) -> ()) {
+        
+        let session = URLSession.shared
+        let url = URL(string: "https://paul-tiy-presence.herokuapp.com/send-request.json")!
+        var request = URLRequest(url: url)
+        
+        
+        request.httpMethod = "POST"
+        request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        
+        
+        
+        let payload = try! JSONSerialization.data(withJSONObject: ["senderEmail": senderEmail, "sendeeEmail": sendeeEmail, status: status], options: [])
+        request.httpBody = payload
+        
+        let task = session.dataTask(with: request) { (optionalData, optionalResponse, optionalError) in
+            
+            if let data = optionalData {
+                print(data)
+                completion(self.processPostSentRequest(data: data, error: optionalError))
+                
+                
+            } else if let response = optionalResponse {
+                let error = Error.http(response as! HTTPURLResponse)
+                completion(.failure(error))
+                
+                
+                print("optionalResponse: \(optionalResponse)")
+                
+            } else {
+                completion(.failure(.system(optionalError!)))
+            }
+        }
+        task.resume()
+    }
     
+    func processPostSentRequest(data: Data, error: Swift.Error?) -> RequestPostResult {
+        if let object = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Bool] {
+            print(object)
+            return .successSent(object)
+        } else {
+            return .failure(.system(error!))
+        }
+    }
     
     
     
@@ -66,7 +111,7 @@ class RequestPost {
         
         if let requests = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [[String: Any]] {
             if let requestArray = UserRequest.array(from: requests) {
-                return .success(requestArray)
+                return .successRequests(requestArray)
             }
         } else {
             return .failure(.system(error!))
@@ -113,7 +158,7 @@ class RequestPost {
         
         if let requests = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [[String: Any]] {
             if let requestArray = UserRequest.array(from: requests) {
-                return .success(requestArray)
+                return .successRequests(requestArray)
             }
         } else {
             return .failure(.system(error!))

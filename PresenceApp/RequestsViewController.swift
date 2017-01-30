@@ -9,7 +9,11 @@
 import UIKit
 
 class RequestsViewController: UIViewController {
+    
+    var userEmail: String = ""
 
+    @IBOutlet var currentRequestsTableView: UITableView!
+    @IBOutlet var expiredRequestsTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.darkGray
@@ -17,20 +21,20 @@ class RequestsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.update()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func update() {
+        OperationQueue.main.addOperation {
+            self.currentRequestsTableView.backgroundColor = UIColor.lightGray
+            self.currentRequestsTableView.reloadData()
+            
+            self.expiredRequestsTableView.backgroundColor = UIColor.lightGray
+            self.expiredRequestsTableView.reloadData()
+            return
+        }
     }
-    */
-
 }

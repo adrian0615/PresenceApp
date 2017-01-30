@@ -20,9 +20,6 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
     
     var userEmail: String = ""
     
-    
-    var indexOfEvent: Int? = nil
-    
     let eventCellIdentifier = "EventCell"
 
     
@@ -38,8 +35,6 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
         
         contactsVC.userEmail = self.userEmail
         
-        
-        
         self.present(contactsVC, animated: true, completion: nil)
         
     }
@@ -49,8 +44,6 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
         let profileVC = self.storyboard!.instantiateViewController(withIdentifier: "ProfileView") as! ProfileViewController
         
         profileVC.userEmail = self.userEmail
-        
-        
         
         self.present(profileVC, animated: true, completion: nil)
         
@@ -63,8 +56,6 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        update()
-        
         return events.count
     }
     
@@ -84,14 +75,10 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
         
         let eventVC = self.storyboard!.instantiateViewController(withIdentifier: "EventView") as! EventViewController
         
-        let eventNav = self.storyboard!.instantiateViewController(withIdentifier: "EventNav")
-        indexOfEvent = indexPath.row
         eventVC.event = events[indexPath.row]
+        eventVC.userEmail = userEmail
         
-        
-        
-        
-        self.present(eventNav, animated: true, completion: nil)
+        self.present(eventVC, animated: true, completion: nil)
         
         
     }
@@ -140,6 +127,7 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
     
     func update() {
         OperationQueue.main.addOperation {
+            self.eventsTableView.backgroundColor = UIColor.lightGray
             self.eventsTableView.reloadData()
         return
     }

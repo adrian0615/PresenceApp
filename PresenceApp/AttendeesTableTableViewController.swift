@@ -13,12 +13,22 @@ class AttendeesTableTableViewController: UITableViewController {
     
     let userPost = UserPost()
     var attendees: [Attendee] = []
+    
+    
+    var eventId: Int = 0
+    
+    let attendeeCellIdentifier = "AttendeeCell"
+    
+    
+    func sendRequest(action: UIAlertAction!) {
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         
-        userPost.fetchAttendees(id: 12) { result in
+        userPost.fetchAttendees(id: eventId) { result in
             switch result {
             case let .successUsers(array):
                 print(result)
@@ -62,13 +72,30 @@ class AttendeesTableTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: attendeeCellIdentifier, for: indexPath)
         
         cell.textLabel?.text = "\(attendees[indexPath.row].firstName) \(attendees[indexPath.row].lastName)"
         cell.textLabel?.textAlignment = .center
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let acNoNetwork = UIAlertController(title: "Friend Request", message: "Would You Like to Connect?", preferredStyle: .alert)
+        
+        acNoNetwork.addAction(UIAlertAction(title: "Yes", style: .default, handler: sendRequest))
+        
+        acNoNetwork.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+        
+        self.present(acNoNetwork, animated: true)
+        
+        return
+        
+    }
+    
+    
 
     func update() {
         OperationQueue.main.addOperation {
