@@ -7,13 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		074030DA1E3E89F600D1BE18 /* AttendeesTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074030D91E3E89F600D1BE18 /* AttendeesTableTableViewController.swift */; };
+		074030DC1E3E8DBB00D1BE18 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074030DB1E3E8DBB00D1BE18 /* ContactsViewController.swift */; };
+		074030DE1E3E902E00D1BE18 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074030DD1E3E902E00D1BE18 /* ContactViewController.swift */; };
+		074030E01E3E907D00D1BE18 /* RequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074030DF1E3E907D00D1BE18 /* RequestsViewController.swift */; };
+		074030E21E3E909A00D1BE18 /* SentRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074030E11E3E909A00D1BE18 /* SentRequestsViewController.swift */; };
+		074030E41E3EA8D500D1BE18 /* Attendee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074030E31E3EA8D500D1BE18 /* Attendee.swift */; };
+		074030E61E3ECB9500D1BE18 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074030E51E3ECB9500D1BE18 /* Request.swift */; };
+		074030E81E3ED2A000D1BE18 /* RequestPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074030E71E3ED2A000D1BE18 /* RequestPost.swift */; };
+		074030EA1E3ED5D700D1BE18 /* RequestPostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074030E91E3ED5D700D1BE18 /* RequestPostTests.swift */; };
+		074030EC1E3EDDC200D1BE18 /* AttendeePostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074030EB1E3EDDC200D1BE18 /* AttendeePostTests.swift */; };
 		07DF393B1E3A38180037E65D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DF393A1E3A38180037E65D /* AppDelegate.swift */; };
-		07DF393D1E3A38180037E65D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DF393C1E3A38180037E65D /* ViewController.swift */; };
+		07DF393D1E3A38180037E65D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DF393C1E3A38180037E65D /* LoginViewController.swift */; };
 		07DF39401E3A38180037E65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07DF393E1E3A38180037E65D /* Main.storyboard */; };
 		07DF39421E3A38180037E65D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07DF39411E3A38180037E65D /* Assets.xcassets */; };
 		07DF39451E3A38180037E65D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07DF39431E3A38180037E65D /* LaunchScreen.storyboard */; };
 		07DF39501E3A38180037E65D /* PresenceAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DF394F1E3A38180037E65D /* PresenceAppTests.swift */; };
 		07DF395B1E3A38180037E65D /* PresenceAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DF395A1E3A38180037E65D /* PresenceAppUITests.swift */; };
+		07DF39691E3A382D0037E65D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DF39681E3A382D0037E65D /* User.swift */; };
+		07DF396B1E3A3E440037E65D /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DF396A1E3A3E440037E65D /* Event.swift */; };
+		07DF396F1E3A42710037E65D /* EventStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DF396E1E3A42710037E65D /* EventStore.swift */; };
+		07DF39711E3A42D60037E65D /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DF39701E3A42D60037E65D /* ImageStore.swift */; };
+		07DF39731E3A43AA0037E65D /* UserPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DF39721E3A43AA0037E65D /* UserPost.swift */; };
+		07DF39751E3A44650037E65D /* EventPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DF39741E3A44650037E65D /* EventPost.swift */; };
+		07DF39791E3A90600037E65D /* PresenceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DF39781E3A90600037E65D /* PresenceAPI.swift */; };
+		07DF397B1E3A969C0037E65D /* EventStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DF397A1E3A969C0037E65D /* EventStoreTests.swift */; };
+		07DF397D1E3A96C90037E65D /* UserStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DF397C1E3A96C90037E65D /* UserStoreTests.swift */; };
+		07DF397F1E3A98120037E65D /* UserPostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DF397E1E3A98120037E65D /* UserPostTests.swift */; };
+		07DF39811E3A98350037E65D /* EventPostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DF39801E3A98350037E65D /* EventPostTests.swift */; };
+		07DF39831E3B9C1E0037E65D /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DF39821E3B9C1E0037E65D /* EventsViewController.swift */; };
+		07DF39851E3CE9320037E65D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DF39841E3CE9320037E65D /* ProfileViewController.swift */; };
+		07DF39871E3CE9440037E65D /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DF39861E3CE9440037E65D /* RegisterViewController.swift */; };
+		07DF39891E3CE95B0037E65D /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DF39881E3CE95B0037E65D /* EventViewController.swift */; };
+		07DF398B1E3D42810037E65D /* ImagePostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DF398A1E3D42810037E65D /* ImagePostTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +60,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		074030D91E3E89F600D1BE18 /* AttendeesTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendeesTableTableViewController.swift; sourceTree = "<group>"; };
+		074030DB1E3E8DBB00D1BE18 /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
+		074030DD1E3E902E00D1BE18 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
+		074030DF1E3E907D00D1BE18 /* RequestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestsViewController.swift; sourceTree = "<group>"; };
+		074030E11E3E909A00D1BE18 /* SentRequestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentRequestsViewController.swift; sourceTree = "<group>"; };
+		074030E31E3EA8D500D1BE18 /* Attendee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attendee.swift; sourceTree = "<group>"; };
+		074030E51E3ECB9500D1BE18 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		074030E71E3ED2A000D1BE18 /* RequestPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestPost.swift; sourceTree = "<group>"; };
+		074030E91E3ED5D700D1BE18 /* RequestPostTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestPostTests.swift; sourceTree = "<group>"; };
+		074030EB1E3EDDC200D1BE18 /* AttendeePostTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendeePostTests.swift; sourceTree = "<group>"; };
 		07DF39371E3A38180037E65D /* PresenceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PresenceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07DF393A1E3A38180037E65D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		07DF393C1E3A38180037E65D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		07DF393C1E3A38180037E65D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		07DF393F1E3A38180037E65D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		07DF39411E3A38180037E65D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		07DF39441E3A38180037E65D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +83,22 @@
 		07DF39561E3A38180037E65D /* PresenceAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PresenceAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		07DF395A1E3A38180037E65D /* PresenceAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenceAppUITests.swift; sourceTree = "<group>"; };
 		07DF395C1E3A38180037E65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		07DF39681E3A382D0037E65D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		07DF396A1E3A3E440037E65D /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		07DF396E1E3A42710037E65D /* EventStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventStore.swift; sourceTree = "<group>"; };
+		07DF39701E3A42D60037E65D /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
+		07DF39721E3A43AA0037E65D /* UserPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPost.swift; sourceTree = "<group>"; };
+		07DF39741E3A44650037E65D /* EventPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPost.swift; sourceTree = "<group>"; };
+		07DF39781E3A90600037E65D /* PresenceAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PresenceAPI.swift; path = ../PresenceAPI.swift; sourceTree = "<group>"; };
+		07DF397A1E3A969C0037E65D /* EventStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventStoreTests.swift; sourceTree = "<group>"; };
+		07DF397C1E3A96C90037E65D /* UserStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStoreTests.swift; sourceTree = "<group>"; };
+		07DF397E1E3A98120037E65D /* UserPostTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostTests.swift; sourceTree = "<group>"; };
+		07DF39801E3A98350037E65D /* EventPostTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPostTests.swift; sourceTree = "<group>"; };
+		07DF39821E3B9C1E0037E65D /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		07DF39841E3CE9320037E65D /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		07DF39861E3CE9440037E65D /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		07DF39881E3CE95B0037E65D /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		07DF398A1E3D42810037E65D /* ImagePostTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePostTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +150,27 @@
 			isa = PBXGroup;
 			children = (
 				07DF393A1E3A38180037E65D /* AppDelegate.swift */,
-				07DF393C1E3A38180037E65D /* ViewController.swift */,
+				07DF393C1E3A38180037E65D /* LoginViewController.swift */,
+				07DF39861E3CE9440037E65D /* RegisterViewController.swift */,
+				07DF39821E3B9C1E0037E65D /* EventsViewController.swift */,
+				07DF39881E3CE95B0037E65D /* EventViewController.swift */,
+				074030D91E3E89F600D1BE18 /* AttendeesTableTableViewController.swift */,
+				074030DB1E3E8DBB00D1BE18 /* ContactsViewController.swift */,
+				074030DD1E3E902E00D1BE18 /* ContactViewController.swift */,
+				074030DF1E3E907D00D1BE18 /* RequestsViewController.swift */,
+				074030E11E3E909A00D1BE18 /* SentRequestsViewController.swift */,
+				07DF39841E3CE9320037E65D /* ProfileViewController.swift */,
 				07DF393E1E3A38180037E65D /* Main.storyboard */,
+				07DF39781E3A90600037E65D /* PresenceAPI.swift */,
+				07DF39681E3A382D0037E65D /* User.swift */,
+				074030E31E3EA8D500D1BE18 /* Attendee.swift */,
+				07DF396A1E3A3E440037E65D /* Event.swift */,
+				074030E51E3ECB9500D1BE18 /* Request.swift */,
+				07DF39721E3A43AA0037E65D /* UserPost.swift */,
+				074030E71E3ED2A000D1BE18 /* RequestPost.swift */,
+				07DF396E1E3A42710037E65D /* EventStore.swift */,
+				07DF39741E3A44650037E65D /* EventPost.swift */,
+				07DF39701E3A42D60037E65D /* ImageStore.swift */,
 				07DF39411E3A38180037E65D /* Assets.xcassets */,
 				07DF39431E3A38180037E65D /* LaunchScreen.storyboard */,
 				07DF39461E3A38180037E65D /* Info.plist */,
@@ -112,6 +183,13 @@
 			children = (
 				07DF394F1E3A38180037E65D /* PresenceAppTests.swift */,
 				07DF39511E3A38180037E65D /* Info.plist */,
+				07DF397E1E3A98120037E65D /* UserPostTests.swift */,
+				074030EB1E3EDDC200D1BE18 /* AttendeePostTests.swift */,
+				074030E91E3ED5D700D1BE18 /* RequestPostTests.swift */,
+				07DF398A1E3D42810037E65D /* ImagePostTests.swift */,
+				07DF397A1E3A969C0037E65D /* EventStoreTests.swift */,
+				07DF397C1E3A96C90037E65D /* UserStoreTests.swift */,
+				07DF39801E3A98350037E65D /* EventPostTests.swift */,
 			);
 			path = PresenceAppTests;
 			sourceTree = "<group>";
@@ -259,8 +337,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07DF393D1E3A38180037E65D /* ViewController.swift in Sources */,
+				07DF39831E3B9C1E0037E65D /* EventsViewController.swift in Sources */,
+				07DF396B1E3A3E440037E65D /* Event.swift in Sources */,
+				074030DE1E3E902E00D1BE18 /* ContactViewController.swift in Sources */,
+				074030E61E3ECB9500D1BE18 /* Request.swift in Sources */,
+				074030E01E3E907D00D1BE18 /* RequestsViewController.swift in Sources */,
+				07DF396F1E3A42710037E65D /* EventStore.swift in Sources */,
+				074030E21E3E909A00D1BE18 /* SentRequestsViewController.swift in Sources */,
+				07DF393D1E3A38180037E65D /* LoginViewController.swift in Sources */,
+				074030E81E3ED2A000D1BE18 /* RequestPost.swift in Sources */,
+				074030DC1E3E8DBB00D1BE18 /* ContactsViewController.swift in Sources */,
+				07DF39791E3A90600037E65D /* PresenceAPI.swift in Sources */,
+				07DF39851E3CE9320037E65D /* ProfileViewController.swift in Sources */,
 				07DF393B1E3A38180037E65D /* AppDelegate.swift in Sources */,
+				07DF39751E3A44650037E65D /* EventPost.swift in Sources */,
+				07DF39891E3CE95B0037E65D /* EventViewController.swift in Sources */,
+				074030DA1E3E89F600D1BE18 /* AttendeesTableTableViewController.swift in Sources */,
+				074030E41E3EA8D500D1BE18 /* Attendee.swift in Sources */,
+				07DF39711E3A42D60037E65D /* ImageStore.swift in Sources */,
+				07DF39871E3CE9440037E65D /* RegisterViewController.swift in Sources */,
+				07DF39731E3A43AA0037E65D /* UserPost.swift in Sources */,
+				07DF39691E3A382D0037E65D /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +365,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07DF397D1E3A96C90037E65D /* UserStoreTests.swift in Sources */,
+				07DF397B1E3A969C0037E65D /* EventStoreTests.swift in Sources */,
+				07DF39811E3A98350037E65D /* EventPostTests.swift in Sources */,
+				07DF398B1E3D42810037E65D /* ImagePostTests.swift in Sources */,
+				07DF397F1E3A98120037E65D /* UserPostTests.swift in Sources */,
+				074030EC1E3EDDC200D1BE18 /* AttendeePostTests.swift in Sources */,
+				074030EA1E3ED5D700D1BE18 /* RequestPostTests.swift in Sources */,
 				07DF39501E3A38180037E65D /* PresenceAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -503,6 +607,7 @@
 				07DF39611E3A38180037E65D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		07DF39621E3A38180037E65D /* Build configuration list for PBXNativeTarget "PresenceAppTests" */ = {
 			isa = XCConfigurationList;
@@ -511,6 +616,7 @@
 				07DF39641E3A38180037E65D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		07DF39651E3A38180037E65D /* Build configuration list for PBXNativeTarget "PresenceAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +625,7 @@
 				07DF39671E3A38180037E65D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
