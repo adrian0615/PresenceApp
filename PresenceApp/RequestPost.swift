@@ -24,7 +24,7 @@ class RequestPost {
         case system(Swift.Error)
     }
     
-    func postSendRequest(senderEmail: String, sendeeEmail: String, status: String, completion: @escaping (RequestPostResult) -> ()) {
+    func postSendRequest(senderEmail: String, sendeeEmail: String, completion: @escaping (RequestPostResult) -> ()) {
         
         let session = URLSession.shared
         let url = URL(string: "https://paul-tiy-presence.herokuapp.com/send-request.json")!
@@ -37,7 +37,7 @@ class RequestPost {
         
         
         
-        let payload = try! JSONSerialization.data(withJSONObject: ["senderEmail": senderEmail, "sendeeEmail": sendeeEmail, status: status], options: [])
+        let payload = try! JSONSerialization.data(withJSONObject: ["requesterEmail": senderEmail, "requesteeEmail": sendeeEmail, "status": "REQUESTED"], options: [])
         request.httpBody = payload
         
         let task = session.dataTask(with: request) { (optionalData, optionalResponse, optionalError) in
@@ -72,7 +72,7 @@ class RequestPost {
     
     
     
-    func fetchIncomingRequests(id: Int, status: String, originalRequestTime: TimeInterval, stale: Bool, completion: @escaping (RequestPostResult) -> ()) {
+    func fetchIncomingRequests(email: String, completion: @escaping (RequestPostResult) -> ()) {
         
         
         let session = URLSession.shared
@@ -84,7 +84,7 @@ class RequestPost {
         request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         
-        let payload = try! JSONSerialization.data(withJSONObject: ["id": id], options: [])
+        let payload = try! JSONSerialization.data(withJSONObject: ["email": email], options: [])
         request.httpBody = payload
         
         let task = session.dataTask(with: request) { (optionalData, optionalResponse, optionalError) in
@@ -119,11 +119,11 @@ class RequestPost {
         return .failure(.system(error!))
     }
     
-    func fetchOutgoingRequests(id: Int, status: String, originalRequestTime: TimeInterval, stale: Bool, completion: @escaping (RequestPostResult) -> ()) {
+    func fetchOutgoingRequests(email: String, completion: @escaping (RequestPostResult) -> ()) {
         
         
         let session = URLSession.shared
-        let url = URL(string: "https://paul-tiy-presence.herokuapp.com/user-incoming-requests.json")!
+        let url = URL(string: "https://paul-tiy-presence.herokuapp.com/user-outgoing-requests.json")!
         var request = URLRequest(url: url)
         
         
@@ -131,7 +131,7 @@ class RequestPost {
         request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         
-        let payload = try! JSONSerialization.data(withJSONObject: ["id": id], options: [])
+        let payload = try! JSONSerialization.data(withJSONObject: ["email": email], options: [])
         request.httpBody = payload
         
         let task = session.dataTask(with: request) { (optionalData, optionalResponse, optionalError) in

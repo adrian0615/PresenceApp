@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "B472D208B88F848B28D7A2FD0982A18D1E7AA783",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "CB31EE023BA5C83B57FFB82C5C7FE0B2C470BCA1" : 9223372036854775807,
+    "B472D208B88F848B28D7A2FD0982A18D1E7AA783" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "462934DB-C88B-4943-98C8-B30F09E285C8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "CB31EE023BA5C83B57FFB82C5C7FE0B2C470BCA1" : "..",
+    "B472D208B88F848B28D7A2FD0982A18D1E7AA783" : "PresenceApp\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "PresenceApp",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "PresenceApp.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/adrian0615\/PresenceApp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B472D208B88F848B28D7A2FD0982A18D1E7AA783"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/adrian0615\/Homework-Submission.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CB31EE023BA5C83B57FFB82C5C7FE0B2C470BCA1"
+    }
+  ]
+}

@@ -1,16 +1,15 @@
 //
-//  AttendeesTableTableViewController.swift
+//  AttendeesViewController.swift
 //  PresenceApp
 //
-//  Created by Adrian McDaniel on 1/29/17.
+//  Created by Adrian McDaniel on 2/1/17.
 //  Copyright © 2017 dssafsfsd. All rights reserved.
 //
 
 import UIKit
 
-class AttendeesTableTableViewController: UITableViewController {
-    
-    
+class AttendeesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
     var userPost: UserPost? = nil
     let requestPost = RequestPost()
     var attendees: [Attendee] = []
@@ -23,6 +22,7 @@ class AttendeesTableTableViewController: UITableViewController {
     
     let attendeeCellIdentifier = "AttendeeCell"
     
+    @IBOutlet var attendeesTableView: UITableView!
     
     func sendRequest(action: UIAlertAction!) {
         
@@ -70,9 +70,10 @@ class AttendeesTableTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Attendees"
         
-        tableView.delegate = self
+        
+        attendeesTableView.delegate = self
+        attendeesTableView.dataSource = self
         
         userPost?.fetchAttendees(id: eventId) { result in
             switch result {
@@ -81,6 +82,8 @@ class AttendeesTableTableViewController: UITableViewController {
                 print(array)
                 
                 self.attendees = array
+                
+                print(self.attendees[0].firstName)
                 
             case let .failure(error):
                 print("Failed to retrieve events. Error: \(error)")
@@ -106,27 +109,28 @@ class AttendeesTableTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return attendees.count
     }
     
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: attendeeCellIdentifier, for: indexPath)
         
         cell.textLabel?.text = "\(attendees[indexPath.row].firstName) \(attendees[indexPath.row].lastName)"
         cell.textLabel?.textAlignment = .center
+        cell.textLabel?.textColor = UIColor.blue
         
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         requesteeEmail = attendees[indexPath.row].email
@@ -148,11 +152,9 @@ class AttendeesTableTableViewController: UITableViewController {
     
     func update() {
         OperationQueue.main.addOperation {
-            self.tableView.reloadData()
+            self.attendeesTableView.backgroundColor = UIColor.lightGray
+            self.attendeesTableView.reloadData()
             return
         }
-    }
-    
-    
-    
+}
 }

@@ -11,7 +11,7 @@ import UIKit
 class EventsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     let eventStore = EventStore()
-    let userPost = UserPost()
+    var userPost: UserPost? = nil
     var events: [Event] = [] {
         didSet {
             update()
@@ -34,8 +34,10 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
         let contactsVC = self.storyboard!.instantiateViewController(withIdentifier: "ContactsView") as! ContactsViewController
         
         contactsVC.userEmail = self.userEmail
+        contactsVC.userPost = self.userPost
         
-        self.present(contactsVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(contactsVC, animated:
+            true)
         
     }
     
@@ -44,8 +46,10 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
         let profileVC = self.storyboard!.instantiateViewController(withIdentifier: "ProfileView") as! ProfileViewController
         
         profileVC.userEmail = self.userEmail
+        profileVC.userPost = self.userPost
         
-        self.present(profileVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(profileVC, animated:
+            true)
         
     }
     
@@ -77,8 +81,10 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
         
         eventVC.event = events[indexPath.row]
         eventVC.userEmail = userEmail
+        eventVC.userPost = userPost
         
-        self.present(eventVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(eventVC, animated:
+            true)
         
         
     }
@@ -87,7 +93,11 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.darkGray
+        
+        navigationController?.isNavigationBarHidden = false
+        
+        
+        
         
         eventsTableView.delegate = self
         eventsTableView.dataSource = self
@@ -100,7 +110,7 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
                 
                 self.events = array
                 
-                print(self.events[0].name)
+                
                 
             case let .failure(error):
                 print("Failed to retrieve events. Error: \(error)")
@@ -110,14 +120,18 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
+    func back() {
+        self.dismiss(animated: true, completion: nil) }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.update()
-        print("email: \(self.userEmail)")
+    
     }
+    
+    
     
     
     override func didReceiveMemoryWarning() {
@@ -131,6 +145,8 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
             self.eventsTableView.reloadData()
         return
     }
+        
+        
 }
 
 }

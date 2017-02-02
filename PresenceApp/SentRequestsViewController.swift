@@ -11,14 +11,37 @@ import UIKit
 class SentRequestsViewController: UIViewController {
     
     var userEmail: String = ""
+    let requestPost = RequestPost()
+    
+    var requests: [UserRequest] = []
+    var expiredRequests: [UserRequest] = []
 
     @IBOutlet var currentSentRequestsTableView: UITableView!
     @IBOutlet var expiredSentRequestsTableView: UITableView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.darkGray
+        
+        title = "Outgoing"
+        
+        requestPost.fetchOutgoingRequests(email: userEmail) { result in
+            switch result {
+            case let .successRequests(array):
+                print(result)
+                print(array)
+                
+                self.requests = array
+                
+            case let .failure(error):
+                print("Failed to retrieve requests. Error: \(error)")
+                
+            default:
+                print("We have some other issue")
+            }
+        }
 
-        // Do any additional setup after loading the view.
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {

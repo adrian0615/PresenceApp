@@ -17,6 +17,7 @@ internal enum UserPostResult {
     case successLogin([String: Bool])
     case successUsers([Attendee])
     case successUser(User)
+    case successContacts([User])
 
     case failure(UserPost.Error)
 }
@@ -267,4 +268,54 @@ class UserPost {
 }
         
 }
+    func fetchContacts(email: String, completion: @escaping (UserPostResult) -> ()) {
+        
+        
+        let session = URLSession.shared
+        let url = URL(string: "https://paul-tiy-presence.herokuapp.com/get-user-contacts.json")!
+        var request = URLRequest(url: url)
+        
+        
+        request.httpMethod = "POST"
+        request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        
+        let payload = try! JSONSerialization.data(withJSONObject: ["email": email], options: [])
+        request.httpBody = payload
+        
+        let task = session.dataTask(with: request) { (optionalData, optionalResponse, optionalError) in
+            
+            
+            if let data = optionalData {
+                completion(self.processRecentContactsRequest(data: data, error: optionalError))
+                print(data)
+                
+            } else if let response = optionalResponse {
+                let error = Error.http(response as! HTTPURLResponse)
+                completion(.failure(error))
+                
+                
+            } else {
+                completion(.failure(.system(optionalError!)))
+            }
+        }
+        
+        task.resume()
+    }
+    
+    func processRecentContactsRequest(data: Data, error: Swift.Error?) -> UserPostResult {
+        
+        if let contacts = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [[String: Any]] {
+            if let userArray = User.array(from: contacts) {
+                return .successContacts(userArray)
+            }
+        } else {
+            return .failure(.system(error!))
+        }
+        return .failure(.system(error!))
+    }
+    
+    
+    
+    
 }

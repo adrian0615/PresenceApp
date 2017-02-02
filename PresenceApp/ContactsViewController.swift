@@ -10,6 +10,7 @@ import UIKit
 
 class ContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    var userPost: UserPost? = nil
     var userEmail: String = ""
     
     var contacts: [User] = []
@@ -26,7 +27,8 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
         
         
         
-        self.present(requestsVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(requestsVC, animated:
+            true)
         
     }
     @IBAction func sentRequestsButton(_ sender: Any) {
@@ -34,7 +36,8 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
         
         sentRequestsVC.userEmail = self.userEmail
         
-        self.present(sentRequestsVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(sentRequestsVC, animated:
+            true)
         
     }
     
@@ -68,7 +71,8 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
         
         
         
-        self.present(contactVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(contactVC, animated:
+            true)
         
         
     }
@@ -76,8 +80,25 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.darkGray
+        
+        
+        
 
+        userPost?.fetchContacts(email: userEmail) { result in
+            switch result {
+            case let .successContacts(array):
+                print(result)
+                print(array)
+                
+                self.contacts = array
+                
+            case let .failure(error):
+                print("Failed to retrieve events. Error: \(error)")
+                
+            default:
+                print("We have some other issue")
+            }
+        }
         
     }
     

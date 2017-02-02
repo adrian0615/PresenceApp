@@ -11,6 +11,8 @@ import UIKit
 class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     let userPost = UserPost()
+    
+    var userEmail: String = ""
  
     var registerAnswer: [String:Bool] = [:]
     
@@ -45,8 +47,11 @@ func badRegistry(action: UIAlertAction!) {
                 if self.registerAnswer == ["success": true] {
                     OperationQueue.main.addOperation {
                         
-                        let eventsNav = self.storyboard!.instantiateViewController(withIdentifier: "EventsNav")
-                        self.present(eventsNav, animated: true, completion: nil)
+                        let eventsVC = self.storyboard!.instantiateViewController(withIdentifier: "EventsView") as! EventsViewController
+                        
+                        eventsVC.userEmail = self.userEmail
+                        eventsVC.userPost = self.userPost
+                        self.present(eventsVC, animated: true, completion: nil)
                         
                         return
                     }
@@ -92,6 +97,8 @@ func badRegistry(action: UIAlertAction!) {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.darkGray
+        
+        self.navigationController?.isNavigationBarHidden = false
         
         firstNameField.delegate = self
         lastNameField.delegate = self
@@ -144,7 +151,7 @@ func badRegistry(action: UIAlertAction!) {
             if textField.text?.isEmpty ?? true {
                 return false
             } else {
-                
+                userEmail = emailField.text!
                 print(textField.text!)
                 return true
             }

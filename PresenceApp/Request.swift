@@ -10,37 +10,44 @@ import Foundation
 
 
 class UserRequest : Equatable {
+    //should be a subclass of User
+    
     public static func ==(lhs: UserRequest, rhs: UserRequest) -> Bool {
-        return lhs.id == rhs.id && lhs.status == rhs.status && lhs.originalRequestTime == rhs.originalRequestTime && lhs.stale == rhs.stale
+        return lhs.firstName == rhs.firstName && lhs.lastName == rhs.lastName && lhs.email == rhs.email
+    }
+    
+    let firstName: String
+    let lastName: String
+    let email: String
+    
+    
+    
+    init(firstName: String, lastName: String, email: String) {
+        self.firstName = firstName
+        self.lastName = lastName
+        self.email = email
         
     }
     
-    let id: Int
-    var status: String
-    let originalRequestTime: TimeInterval
-    var stale: Bool
-    
-    init(id: Int, status: String, originalRequestTime: TimeInterval, stale: Bool) {
-        self.id = id
-        self.originalRequestTime = originalRequestTime
-        self.status = status
-        self.stale = stale
-    }
     
     convenience init?(jsonObject: [String: Any]) {
         
         
-        guard let requestID = jsonObject["id"] as? Int,
-            let requestStatus = jsonObject["status"] as? String,
-            let requestTime = jsonObject["originalRequestTime"] as? TimeInterval,
-            let requestStale = jsonObject["stale"] as? Bool else {
+        
+        
+        
+        guard let userFirst = jsonObject["firstName"] as? String,
+            let userLast = jsonObject["lastName"] as? String,
+            let userEmail = jsonObject["email"] as? String else {
                 
                 return nil
         }
         
-        self.init(id: requestID, status: requestStatus, originalRequestTime: requestTime, stale: requestStale)
+        
+        self.init(firstName: userFirst, lastName: userLast, email: userEmail)
+        
     }
-    
+
 }
 
 
@@ -48,9 +55,6 @@ extension UserRequest {
     internal static func array(from jsonObjects: [[String: Any]]) -> [UserRequest]? {
         let requestArray = jsonObjects.flatMap(UserRequest.init(jsonObject:))
         
-        if jsonObjects.count != requestArray.count {
-            return nil
-        }
         
         return requestArray
     }

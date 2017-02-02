@@ -9,7 +9,7 @@
 import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
-    
+
     
     let userPost = UserPost()
     var loginAnswer: [String:Bool] = [:]
@@ -23,13 +23,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     
     
+    
+    
     @IBOutlet var userNameField: UITextField!
     @IBOutlet var passwordField: UITextField!
     
+    @IBAction func registerButton(_ sender: Any) {
+        let registerVC = self.storyboard!.instantiateViewController(withIdentifier: "RegisterView") as! RegisterViewController
+        
+        
+        self.navigationController?.pushViewController(registerVC, animated:
+            true)
+        
+    }
     
     func badLogin(action: UIAlertAction!) {
-        userNameField.text = nil
-        passwordField.text = nil
+        userNameField.text = ""
+        passwordField.text = ""
         
     }
     
@@ -37,11 +47,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func loginButton(_ sender: Any) {
         
-        
-        
-        
-        
-        //self.present(eventsVC, animated: true, completion: nil)
+    
         userPost.postLogin(email: userNameField.text!, password: passwordField.text!) { loginResult in
             switch loginResult {
                 
@@ -58,10 +64,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         let eventsVC = self.storyboard!.instantiateViewController(withIdentifier: "EventsView") as! EventsViewController
                         
                         eventsVC.userEmail = self.userEmail
+                        eventsVC.userPost = self.userPost
                         print("email: \(eventsVC.userEmail)")
                         
-                       
-                        self.present(eventsVC, animated: true, completion: nil)
+                        self.userNameField.text = ""
+                        self.passwordField.text = ""
+                    
+                        self.navigationController?.pushViewController(eventsVC, animated:
+                            true)
+                        
                         
                         
                         return
@@ -108,6 +119,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.darkGray
+        
         
         userNameField.delegate = self
         passwordField.delegate = self

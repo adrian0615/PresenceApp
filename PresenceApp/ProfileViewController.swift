@@ -10,7 +10,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    let userPost = UserPost()
+    var userPost: UserPost? = nil
     
     var userEmail: String = ""
     var user: User? = nil
@@ -32,7 +32,11 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.darkGray
         
-        userPost.postProfile(email: userEmail) { result in
+        title = "Profile"
+        
+        
+        
+        userPost?.postProfile(email: userEmail) { result in
             switch result {
                 
             case let .successUser(user):

@@ -11,7 +11,7 @@ import UIKit
 
 class EventViewController: UIViewController {
     
-    var userPost = UserPost()
+    var userPost: UserPost? = nil
     var loginAnswer: [String:Bool] = [:]
     var userEmail: String = ""
     
@@ -34,7 +34,7 @@ class EventViewController: UIViewController {
     
     @IBAction func checkInButton(_ sender: Any) {
         OperationQueue.main.addOperation {
-            self.userPost.postCheckIn(email: self.userEmail, id: (self.event?.iD)!) { loginResult in
+            self.userPost?.postCheckIn(email: self.userEmail, id: (self.event?.iD)!) { loginResult in
                 switch loginResult {
                     
                 case let .successLogin(check) :
@@ -43,10 +43,14 @@ class EventViewController: UIViewController {
                     if self.loginAnswer == ["success": true] {
                         
                         
-                            let attendeesVC = self.storyboard!.instantiateViewController(withIdentifier: "AttendeesView") as! AttendeesTableTableViewController
+                            let attendeesVC = self.storyboard!.instantiateViewController(withIdentifier: "AttendeesView") as! AttendeesViewController
                         
                         attendeesVC.eventId = (self.event?.iD)!
-                            self.present(attendeesVC, animated: true, completion: nil)
+                        attendeesVC.userEmail = self.userEmail
+                        attendeesVC.userPost = self.userPost
+                        
+                        self.navigationController?.pushViewController(attendeesVC, animated:
+                            true)
                         
                     } else {
                         
@@ -88,7 +92,9 @@ class EventViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.darkGray
+        
+        
+        
         
         eventNameLabel?.text = event?.name
         locationLabel?.text = event?.location
